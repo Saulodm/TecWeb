@@ -1,0 +1,43 @@
+.page{
+	margin-left: 300px;
+	margin-right: 300px;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	border: 2px solid;
+	border-color: rgb(255, 255, 255);
+	min-height: 270px
+	
+
+}
+.nosso-padding{
+	margin: 30px;
+}
+#botao{
+	margin-top: 20px;
+	margin-right: 200px;
+	margin-left: 70px;
+
+}
+.painel {
+    margin-bottom: 15px;
+    margin-top: 140px;
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+.centralizado{
+	padding-left: 300px;
+
+}
+.titulo{
+	text-align: center;
+	color:  rgb(255, 255, 255);
+}
+.body-background{
+	background-image: url(http://www.bhagenda.com.br/wp-content/uploads/2016/09/A-Igreja-da-Pampulha-em-Belo-Horizonte-projetada-pelo-arquiteto-Oscar-Niemeyer.jpeg);
+}
+.map-size{
+	height: 400px;
+}
