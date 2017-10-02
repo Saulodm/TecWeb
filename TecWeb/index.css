@@ -10,17 +10,12 @@
 
 }
 .nosso-padding{
-	margin: 30px;
+	padding: 30px;
 }
-#botao{
-	margin-top: 20px;
-	margin-right: 200px;
-	margin-left: 70px;
 
-}
 .painel {
     margin-bottom: 15px;
-    margin-top: 140px;
+    margin-top: 160px;
     background-color: #fff;
     border: 1px solid transparent;
     border-radius: 4px;
@@ -28,7 +23,7 @@
     box-shadow: 0 1px 1px rgba(0,0,0,.05);
 }
 .centralizado{
-	padding-left: 300px;
+	margin: auto;
 
 }
 .titulo{
