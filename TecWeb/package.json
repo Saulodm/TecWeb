@@ -1,0 +1,19 @@
+{
+  "name": "postofacil",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.15.4",
+    "mongo-xlsx": "^1.0.12",
+    "mongodb": "^2.2.31",
+    "ngmap": "^1.18.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
