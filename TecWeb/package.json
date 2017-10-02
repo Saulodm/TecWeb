@@ -2,7 +2,7 @@
   "name": "postofacil",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "index.html",
   "dependencies": {
     "express": "^4.15.4",
     "mongo-xlsx": "^1.0.12",
