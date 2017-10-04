@@ -2,14 +2,16 @@ angular.module('app')
 .controller('SearchController', ['$scope', 'NgMap', 'GeoCoder', function($scope, NgMap, GeoCoder){
     var listaPostos = [];
  
-    const urlBase = "http://localhost:8081/";
+    const urlBase = "http://localhost:3000/";
     $scope.regiaoSelecionada = $scope.postoSelecionado = "0";
     $scope.Regioes = [{cod: 1, nome: "Barreiro"}, {cod: 2, nome: "Centro-Sul"},{cod: 3, nome: "Leste"}, 
                         {cod: 4, nome: "Norte"},{cod: 5, nome: "Nordeste"},{cod: 6, nome: "Norte"},
                         {cod: 7, nome: "Oeste"},{cod: 8, nome: "Pampulha"},{cod: 9, nome: "Venda Nova"}];
     $scope.Postos = [];
     $scope.showMap = false;
-
+    var marker=function(){
+      return { nomePosto:"", position:""}
+    }
 
     httpGetAsync(urlBase+"Lista/",function(res){
         listaPostos = JSON.parse(res)[0];
@@ -47,16 +49,38 @@ angular.module('app')
               
         
     }
-
+  
     this.verDetalhes = function(){
-        angular.forEach($scope.Postos, function(v, k){
-            if(v.Cod == parseInt($scope.postoSelecionado)) {
-                $scope.detalhesPosto = v;
-                $scope.mostrarDetalhes = true;
-                $scope.NomePosto = v.Nome;
-                $scope.Position = v.Endereco;
-                $scope.showMap = true;
-            }
-        });
+        $scope.Markers = [];
+        if(parseInt($scope.postoSelecionado)>1)
+        {
+            $scope.Zoom = 15;
+            $scope.showMap = true;
+            $("#map").addClass("map-size");
+            angular.forEach($scope.Postos, function(v, k){
+                if(v.Cod == parseInt($scope.postoSelecionado)) {
+                    $scope.detalhesPosto = v;
+                    $scope.mostrarDetalhes = true;
+                    var novoMarker = marker();
+                    novoMarker.nomePosto = v.Nome;
+                    novoMarker.position = v.Position;
+                    $scope.Markers.push(novoMarker);                    
+                    $scope.Position = v.Position;                   
+                }
+            });
+        }else
+        {          
+            $scope.showMap = true;               
+            $("#map").removeClass("map-size");
+            $scope.Zoom = 12;  
+            $scope.mostrarDetalhes = false;
+            angular.forEach($scope.Postos, function(v, k){    
+                var novoMarker = marker();
+                novoMarker.nomePosto = v.Nome;
+                novoMarker.position = v.Position;
+                $scope.Markers.push(novoMarker);                
+            });
+            $scope.Position = $scope.Markers[0].position;
+        }
     }
 }]);

@@ -11,7 +11,7 @@
         views: {
             'content': {
                 templateUrl: 'index.html',
-                controller: 'SearchController',
+                controller: 'app/SearchController.js',
                 controllerAs: 'ct'
             }
         }
