@@ -24,7 +24,7 @@
 						<select ng-disabled="regiaoSelecionada == 0" ng-model="postoSelecionado" class="form-control">
 							<option selected="true"  value="0">Selecione o Posto</option>
 							<option selected="true"  value="1">Todos</option>
-							<option ng-repeat="p in Postos" value="{{p.Cod}}">{{p.Nome}}</option>
+							<option ng-repeat="p in Postos" value="{{p.cod}}">{{p.nome}}</option>
 						</select>
 					</div>
 					&nbsp;
@@ -42,14 +42,14 @@
 			<div class="painel" ng-if="mostrarDetalhes">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<p>Nome: {{detalhesPosto.Nome}}</p>
+						<p>Nome: {{detalhesPosto.nome}}</p>
 					</div>
 					<div class="panel-body">
-						<p>Região: {{detalhesPosto.Regiao}}</p>
-						<p>Endereço: {{detalhesPosto.Endereco}}</p>
-						<p>Telefones: {{detalhesPosto.Telefones}}</p>
-						<p>Horário Acolhimento: {{detalhesPosto.Acolhimento}}</p>
-						<p>Horário Farmácia: {{detalhesPosto.Farmacia}}</p>	
+						<p>Região: {{detalhesPosto.regiao}}</p>
+						<p>Endereço: {{detalhesPosto.endereco}}</p>
+						<p>Telefones: {{detalhesPosto.telefones}}</p>
+						<p>Horário Acolhimento: {{detalhesPosto.acolhimento}}</p>
+						<p>Horário Farmácia: {{detalhesPosto.farmacia}}</p>	
 					</div>
 				</div>
 			</div>
