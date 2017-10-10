@@ -38,15 +38,18 @@ angular.module('app')
 
     this.getPostos = function(nome){
         $scope.postoSelecionado = "0";
-        var regiao = "";
-        for(i=0;i< $scope.Regioes.length;i++){
-            if($scope.regiaoSelecionada== $scope.Regioes[i].cod){
-                regiao =  $scope.Regioes[i].nome;
+        if($scope.regiaoSelecionada != "0")
+        {        
+            var regiao = "";
+            for(i=0;i< $scope.Regioes.length;i++){
+                if($scope.regiaoSelecionada== $scope.Regioes[i].cod){
+                    regiao =  $scope.Regioes[i].nome;
+                }
             }
-        }
-        httpGetAsync(urlBase+"Regiao/" + regiao.toUpperCase().replace("-",""),function(res){
-            $scope.Postos = JSON.parse(res);
-        })       
+            httpGet(urlBase+"Regiao/" + regiao.toUpperCase().replace("-",""),function(res){
+                $scope.Postos = JSON.parse(res);
+            }) 
+        }      
     }
   
     this.verDetalhes = function(){
