@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="./index.css">
 	
 </head>
+<!-- inicializando a controller da página utilizando as diretivas do angular -->
 <body ng-controller="SearchController as ct" class="body-background">
 	<form class="page">
 		<h1 class="titulo">Posto Fácil BH</h1>
@@ -14,6 +15,7 @@
 			<div class="centralizado col-md-6">
 				<div>
 					<div>
+						<!-- combo com as regiões -->
 						<select ng-model="regiaoSelecionada" class="form-control" ng-change="ct.getPostos()">
 							<option selected="true"  value="0">Selecione a Região</option>
 							<option ng-repeat="r in Regioes" value="{{r.cod}}">{{r.nome}}</option>
@@ -21,6 +23,7 @@
 					</div>
 					&nbsp;
 					<div>
+						<!-- combo com os postos  -->
 						<select ng-disabled="regiaoSelecionada == 0" ng-model="postoSelecionado" class="form-control">
 							<option selected="true"  value="0">Selecione o Posto</option>
 							<option selected="true"  value="1">Todos</option>
@@ -30,6 +33,7 @@
 					&nbsp;
 				
 					<div>
+						<!-- botão para exibir os detalhes -->
 						<button ng-disabled="postoSelecionado == 0" class="form-control btn btn-success button-margin" ng-click="ct.verDetalhes()">Continuar</button>
 				
 					</div>
@@ -38,7 +42,7 @@
 					
 			</div>
 			<div class="col-md-3"></div>
-
+			<!-- painel com as informações individuias de cada posto -->
 			<div class="painel" ng-if="mostrarDetalhes">
 				<div class="panel panel-default">
 					<div class="panel-heading">
@@ -53,7 +57,7 @@
 					</div>
 				</div>
 			</div>
-		<!-- MAPA -->
+			<!-- MAPA -->
 			<div  id="map">
 				<div ng-if="showMap" class="row" map-lazy-load="https://maps.google.com/maps/api/js">
 					<ng-map zoom="{{Zoom}}" center="[{{Position}}]">
@@ -65,7 +69,7 @@
 	</form>
 
 
-
+	<!-- scripts utilizados na página -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>

@@ -1,18 +1,21 @@
 angular.module('app')
 .controller('SearchController', ['$scope', 'NgMap', 'GeoCoder', function($scope, NgMap, GeoCoder){
     var listaPostos = [];
- 
+    //url base do servidor.
     const urlBase = "http://localhost:3000/";
+    //inicializando os combo box.
     $scope.regiaoSelecionada = $scope.postoSelecionado = "0";
     $scope.Regioes = [{cod: 1, nome: "Barreiro"}, {cod: 2, nome: "Centro-Sul"},{cod: 3, nome: "Leste"}, 
                         {cod: 4, nome: "Norte"},{cod: 5, nome: "Nordeste"},{cod: 6, nome: "Norte"},
                         {cod: 7, nome: "Oeste"},{cod: 8, nome: "Pampulha"},{cod: 9, nome: "Venda Nova"}];
     $scope.Postos = [];
+    //deixando mapa escondido
     $scope.showMap = false;
+    //funcção que retorna um marker novo para colocar no mapa.
     var marker=function(){
       return { nomePosto:"", position:""}
     }
-
+    //função que executa requisição http assincrona.
     function httpGetAsync(theUrl, callback)
     {
         var xmlHttp = new XMLHttpRequest();
@@ -24,6 +27,8 @@ angular.module('app')
         xmlHttp.open("GET", theUrl, true); // true for asynchronous 
         xmlHttp.send();
     }
+
+    //função que executa requisição http sincrona. 
     function httpGet(theUrl, callback)
     {
         var xmlHttp = new XMLHttpRequest();
@@ -35,7 +40,7 @@ angular.module('app')
         xmlHttp.open("GET", theUrl, false); // true for asynchronous 
         xmlHttp.send();
     }
-
+    //função que filtra os postos com base na região selecionada.
     this.getPostos = function(nome){
         $scope.postoSelecionado = "0";
         if($scope.regiaoSelecionada != "0")
@@ -51,7 +56,7 @@ angular.module('app')
             }) 
         }      
     }
-  
+    //função que exibe todos os detalhes de acordo com o posto selecionado.
     this.verDetalhes = function(){
         $scope.Markers = [];
         if(parseInt($scope.postoSelecionado)>1)

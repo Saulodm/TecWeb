@@ -1,11 +1,12 @@
 
-//INICIALIZANDO EXPRESS
+//referência dos módulos.
 var express = require("express");
 var app = express();
 var mongoxlsx = require('mongo-xlsx');
 var mongoose = require('mongoose');
+//url do baco de dados remoto.
 const url = "mongodb://me:1234@ds149724.mlab.com:49724/my_data_base";
-
+//criando a conexão com o banco de dados.
 mongoose.connect(url);
 
 var db = mongoose.connection;
@@ -14,7 +15,7 @@ db.on('error', console.error);
 db.once('open', function (callback) {
 	console.log("Conexao com o banco aberta.");
 });
-
+//criando o schema do banco de dados, funciona da mesma forma que criar um model de um objeto.
 var Schema = mongoose.Schema;
 
 var postoSchema = new Schema({
@@ -32,6 +33,8 @@ mongoose.Promise = global.Promise;
 //   useMongoClient: true  
 // });
 
+
+//função que executa a busca dos postos com base na região selecionada.
 app.get("/Regiao/:id",function(req,res){ 
   var Posto = mongoose.model("Posto",postoSchema);
   Posto.find({regiao: req.params.id},function(err,result){
@@ -42,7 +45,8 @@ app.get("/Regiao/:id",function(req,res){
     res.end( JSON.stringify(result));
   }); 
 });
-  
+
+//função que cria a tabela no banco. A tabela é criada a partir de um arquivo xls. 
 app.get("/CreateBD/",function(req,res){
   console.log("connected");
   var Posto = mongoose.model("Posto",postoSchema);
@@ -74,17 +78,6 @@ app.get("/CreateBD/",function(req,res){
     res.end( JSON.stringify("Created"));
   });
 });
-
-app.get("/Lista/",function(req,res){
-  var model = null;
-  var ods  = './Base de Postos de Saude.ods';
-  mongoxlsx.xlsx2MongoData(ods, model, function(err, data) {
-    dados = data;
-    res.setHeader('Access-Control-Allow-Origin','*');
-    res.end( JSON.stringify(data));
-  });
-});
-
 
 var server = app.listen(3000, function () {
   var host = server.address().address

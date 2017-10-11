@@ -1,3 +1,4 @@
+/* realiza os ajustes do layout principal da página */
 .page{
 	margin-left: 300px;
 	margin-right: 300px;
@@ -9,10 +10,11 @@
 	
 
 }
+/* faz com que as informações fiquem dentro do layout central */
 .nosso-padding{
 	padding: 30px;
 }
-
+/* ajustes do painel de informações */
 .painel {
     margin-bottom: 15px;
     margin-top: 160px;
@@ -22,21 +24,26 @@
     -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
     box-shadow: 0 1px 1px rgba(0,0,0,.05);
 }
+/* centraliza os combos e o botão */
 .centralizado{
 	margin: auto;
 
 }
+/* faz os ajustes do título */
 .titulo{
 	text-align: center;
 	color:  rgb(255, 255, 255);
 }
+/* set do background da página */
 .body-background{
 	background-image: url(http://www.bhagenda.com.br/wp-content/uploads/2016/09/A-Igreja-da-Pampulha-em-Belo-Horizonte-projetada-pelo-arquiteto-Oscar-Niemeyer.jpeg);
 }
+/* define um tamanho para o mapa */
 .map-size{
 	height: 400px;
 	
 }
+/* ajuste da borda do botão */
 .button-margin{
 	margin-bottom: 20px;
 }

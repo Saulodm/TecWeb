@@ -5,7 +5,7 @@
  .module('app')
  .config(['$stateProvider', '$urlRouterProvider', routeConfig]);
  function routeConfig($stateProvider, $urlRouterProvider) {
-    
+    // configuração de rotas para o ui-router
     $stateProvider.state('Home', {
         url: '/',
         views: {
